@@ -1,7 +1,5 @@
 package co.com.s4n.deliveries.model;
 
-import co.com.s4n.deliveries.services.Direction;
-
 public class Position {
 
 	private int x;
