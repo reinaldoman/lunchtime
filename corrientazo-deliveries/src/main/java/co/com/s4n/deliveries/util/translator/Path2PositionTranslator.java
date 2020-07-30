@@ -1,8 +1,8 @@
 package co.com.s4n.deliveries.util.translator;
 
+import co.com.s4n.deliveries.model.Direction;
 import co.com.s4n.deliveries.model.MovementType;
 import co.com.s4n.deliveries.model.Position;
-import co.com.s4n.deliveries.services.Direction;
 
 public class Path2PositionTranslator {
 
