@@ -1,8 +1,11 @@
 package co.com.s4n.deliveries.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import co.com.s4n.deliveries.exception.NotEnoughRoomInTransportException;
+import co.com.s4n.deliveries.util.Constants;
+import co.com.s4n.deliveries.util.PropertiesUtil;
 
 public class Drone {
 
@@ -12,11 +15,23 @@ public class Drone {
 	
 	private boolean available;
 	
-	private int room = 3; //TODO: load this value from properties
+	private int room;
 	
-	private ArrayList<Lunch> lunches = null;
+	private ArrayList<Lunch> lunches;
 	
 	private ArrayList<Position> destinationDeliveryCoordinates;
+	
+	public Drone() {
+		try {
+			room = Integer.parseInt(PropertiesUtil.getPropertyValue(Constants.MAX_ROOM_FOR_DRONE));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public ArrayList<Position> getDestinationDeliveryCoordinates() {
 		return destinationDeliveryCoordinates;
@@ -50,39 +65,35 @@ public class Drone {
 		this.available = available;
 	}
 
-	public void deliverShipments() {
-		//TODO: rotate and translate
+	public void deliver() {
 		for(Position position : this.getDestinationDeliveryCoordinates()) {
-			sendDeliveryToLocation(position);
+			goToDestination(position);
 		}
 	}
 	
-	private void sendDeliveryToLocation(Position destination) {
-		int xAxisDistanceInBlocks = Math.abs(currentPosition.getX() - destination.getX());//get the absolute value of the distance in blocks
-		int yAxisDistanceInBlocks = Math.abs(currentPosition.getY() - destination.getY());
-		if(currentPosition.getX() > destination.getX()) {
-			//Left movement --> west way
-		} else if(currentPosition.getX() < destination.getX()) {
-			//right movement --> east way
-		} else {
-			//no movement -- stay quiet
-		}
+	private void goToDestination(Position destination) {
+		System.out.println("delivering lunch at: (" + destination.getX() + "," + destination.getY() + ")");
+		int xAxisDistanceInBlocks = currentPosition.getX() - destination.getX();
+		int yAxisDistanceInBlocks = currentPosition.getY() - destination.getY();
+		currentPosition = destination;
+//		if(currentPosition.getX() > destination.getX()) {
+//			//Left movement --> west way
+//		} else if(currentPosition.getX() < destination.getX()) {
+//			//right movement --> east way
+//		} else {
+//			//no movement -- stay quiet
+//		}
+//		
+//		if(currentPosition.getY() > destination.getY()) {
+//			//move down --> south
+//		} else if(currentPosition.getY() < destination.getY()) {
+//			//move up --> North
+//		} else {
+//			//no movement -- stay quiet
+//		}
 		
-		if(currentPosition.getY() > destination.getY()) {
-			//move down --> south
-		} else if(currentPosition.getY() < destination.getY()) {
-			//move up --> North
-		} else {
-			//no movement -- stay quiet
-		}
-		
-		
-		move(xAxisDistanceInBlocks, yAxisDistanceInBlocks);
 	}
 	
-	private void move(int xAxisBlocks, int yAxisBlocks) {
-		
-	}
 	
 	public void setShipmentsCargo(ArrayList<Lunch> lunches) throws NotEnoughRoomInTransportException {
 		if(lunches.size() > room) {

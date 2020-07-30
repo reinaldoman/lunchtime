@@ -13,7 +13,7 @@ import co.com.s4n.deliveries.util.loader.RoutesDescriptor;
 import co.com.s4n.deliveries.validation.DeliveryAreaCoverageValidation;
 import co.com.s4n.deliveries.validation.ValidationResult;
 
-public class Launcher {
+public class DroneLauncher {
 
 	
 	public void launch() throws InvalidEntryException, NotEnoughRoomInTransportException, NonCoveredDestinationException {
@@ -37,7 +37,7 @@ public class Launcher {
 		cleanupWrongCoordinates(routesDescriptor.getDestinationDeliveryCoordinates(), nonDeliveredPositions);
 		drone.setDestinationDeliveryCoordinates(routesDescriptor.getDestinationDeliveryCoordinates());
 		drone.setShipmentsCargo(lunches);
-		drone.deliverShipments();
+		drone.deliver();
 	}
 
 	private void cleanupWrongCoordinates(ArrayList<Position> destinationDeliveryCoordinates,
@@ -46,7 +46,22 @@ public class Launcher {
 		for(Position p : nonDeliveredPositions) {
 			destinationDeliveryCoordinates.remove(p);
 		}
-		
+	}
+	
+	public static void main(String[] args) {
+		DroneLauncher launcher = new DroneLauncher();
+		try {
+			launcher.launch();
+		} catch (InvalidEntryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotEnoughRoomInTransportException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NonCoveredDestinationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

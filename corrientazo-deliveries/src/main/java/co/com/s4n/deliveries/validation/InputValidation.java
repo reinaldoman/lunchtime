@@ -1,14 +1,25 @@
 package co.com.s4n.deliveries.validation;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import co.com.s4n.deliveries.util.Constants;
+import co.com.s4n.deliveries.util.PropertiesUtil;
 
 public class InputValidation implements IValidation{
 
 	@Override
 	public ValidationResult validate(String deliveryInput) {
-		// TODO Auto-generated method stub
-		String regex = "^[A|I|D]{1,10}$"; //TODO: load regex from properties
+		String regex = null; 
+		try {
+			regex = PropertiesUtil.getPropertyValue(Constants.REGEX_INPUT_VALIDATION);
+			String regexMaxLength = PropertiesUtil.getPropertyValue(Constants.NUMBER_OF_BLOCKS_AROUND);
+			regex = regex.replace("INPUT_PLACEHOLDER_VALUE", regexMaxLength);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(deliveryInput);
 		boolean matchResult = matcher.matches();
