@@ -5,7 +5,26 @@ public class Position {
 	private int x;
 	private int y;
 	private Direction direction;
+	private String originalPath;
 	
+	public Position() {
+		
+	}
+	
+	public Position(String incomingPath, Direction direction, int x, int y) {
+		this.direction = direction;
+		this.originalPath = incomingPath;
+		this.x = x;
+		this.y = y;
+	}
+	
+	public String getOriginalPath() {
+		return originalPath;
+	}
+	
+	public void setOriginalPath(String originalPath) {
+		this.originalPath = originalPath;
+	}
 	public int getX() {
 		return x;
 	}

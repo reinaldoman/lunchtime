@@ -6,17 +6,13 @@ import co.com.s4n.deliveries.model.Position;
 
 public class Path2PositionTranslator {
 
-	public Position translate(String inputPath) {
-		return getResultingPositionFromInputPath(inputPath);
+	public static Position translate(String inputPath, Position relativePosition) {
+		return getResultingPositionFromInputPath(inputPath, relativePosition);
 	}
 
-	private Position getResultingPositionFromInputPath(String inputPath) {
+	private static Position getResultingPositionFromInputPath(String inputPath, Position position) {
 
 		char payload[] = inputPath.toCharArray();
-		Position position = new Position();
-		position.setDirection(Direction.NORTH);
-		position.setX(0);
-		position.setY(0);
 		for(int i = 0; i < payload.length; i++)
 		{
 			switch (payload[i]) {
@@ -36,7 +32,7 @@ public class Path2PositionTranslator {
 		return position;
 	}
 
-	private Position getResultingPositionByMovementType(Position position, MovementType movementType) {
+	private static Position getResultingPositionByMovementType(Position position, MovementType movementType) {
 		Position resultingPosition = position;
 		switch (movementType) {
 		case LEFT_ROTATION:
