@@ -1,5 +1,5 @@
-**/target
-**/.settings
+**/corrientazo-deliveries/target
+**/corrientazo-deliveries/.settings
 *.classpath
 *.project
 
