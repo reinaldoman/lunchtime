@@ -1,6 +1,6 @@
 package co.com.s4n.deliveries.common.util.validation;
 
-public class ValidationResult {
+public class Result {
 
 	
 	private boolean valid;

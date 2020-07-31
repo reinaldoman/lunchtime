@@ -12,7 +12,7 @@ import co.com.s4n.deliveries.common.util.properties.Constants;
 import co.com.s4n.deliveries.common.util.properties.PropertiesUtil;
 import co.com.s4n.deliveries.common.util.translator.PathToCoordinatesTranslator;
 import co.com.s4n.deliveries.common.util.validation.InputValidation;
-import co.com.s4n.deliveries.common.util.validation.ValidationResult;
+import co.com.s4n.deliveries.common.util.validation.Result;
 import co.com.s4n.deliveries.exception.InvalidEntryException;
 import co.com.s4n.deliveries.model.location.Direction;
 import co.com.s4n.deliveries.model.location.Position;
@@ -43,17 +43,6 @@ public class DeliveryLoader {
 		return results;
 	}
 	
-	
-	public static void main(String[] args) {
-		DeliveryLoader deliveryLoader = new DeliveryLoader();
-		try {
-			deliveryLoader.listAvailableDrones();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
 	public RoutesDescriptor loadData(String transportIdentifier) throws InvalidEntryException, IOException {
 		//TODO: implement logic to load data from file or other datasource and remove hard code
 		String fileName = PropertiesUtil.getPropertyValue(Constants.INPUT_FILES_PATH) +
@@ -61,7 +50,7 @@ public class DeliveryLoader {
 				transportIdentifier + ".txt";
 		InputValidation validation = new InputValidation();
 		RoutesDescriptor routesDescriptor = new RoutesDescriptor();
-		routesDescriptor.setTransportId(transportIdentifier); 
+		routesDescriptor.setTransportId(transportIdentifier);
 		Position initialPosition = new Position("ORIGIN", Direction.NORTH, 0, 0);
 		FileReader fr = null;
 		BufferedReader br = null;
@@ -73,7 +62,7 @@ public class DeliveryLoader {
 			while((line = br.readLine()) != null)
 		    {
 		    	lineNumber += 1;
-		    	ValidationResult result = validation.validate(line);
+		    	Result result = validation.validate(line);
 		    	if(!result.isValid()) {
 		    		throw new InvalidEntryException("Invalid incoming data at line: " + lineNumber + " with content: " + line);
 		    	}

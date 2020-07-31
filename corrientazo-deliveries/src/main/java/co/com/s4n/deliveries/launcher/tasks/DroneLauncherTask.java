@@ -3,8 +3,8 @@ package co.com.s4n.deliveries.launcher.tasks;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import co.com.s4n.deliveries.common.util.validation.DeliveryAreaCoverageValidation;
-import co.com.s4n.deliveries.common.util.validation.ValidationResult;
+import co.com.s4n.deliveries.common.util.validation.AreaCoverageValidation;
+import co.com.s4n.deliveries.common.util.validation.Result;
 import co.com.s4n.deliveries.exception.InvalidEntryException;
 import co.com.s4n.deliveries.exception.NonCoveredDestinationException;
 import co.com.s4n.deliveries.exception.NotEnoughRoomInTransportException;
@@ -50,27 +50,11 @@ public class DroneLauncherTask implements Task{
 	
 	private void validateDestinations() throws NonCoveredDestinationException {
 		for(Position position : this.drone.getDestinationDeliveryCoordinates()) {
-			DeliveryAreaCoverageValidation validation = new DeliveryAreaCoverageValidation();
-			ValidationResult result = validation.validate(position);
+			AreaCoverageValidation validation = new AreaCoverageValidation();
+			Result result = validation.validate(position);
 			if(!result.isValid()) {
 				throw new NonCoveredDestinationException(result.getMessage());
 			}
-		}
-	}
-
-	public static void main(String[] args) {
-		DroneLauncherTask launcher = new DroneLauncherTask(new Drone());
-		try {
-			launcher.launchDrone();
-		} catch (InvalidEntryException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotEnoughRoomInTransportException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NonCoveredDestinationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 

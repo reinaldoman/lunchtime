@@ -2,14 +2,14 @@ package co.com.s4n.deliveries.common.util.validation;
 
 import co.com.s4n.deliveries.model.location.Position;
 
-public class DeliveryAreaCoverageValidation {
+public class AreaCoverageValidation {
 
-	public ValidationResult validate(Position input){
+	public Result validate(Position input){
 		// TODO Auto-generated method stub
 		
 		//Get settings here to know delivery covered area (ten blocks around initially)
 		int numberOfBlocks = 10; //Remove hard code
-		ValidationResult result = new ValidationResult();
+		Result result = new Result();
 		//toCalculateAreaAround
 		//double area = Math.PI * Math.pow(2, numberOfBlocks); //being numberOfBlocks equivalent with radius
 		

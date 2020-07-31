@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 import co.com.s4n.deliveries.common.util.properties.Constants;
 import co.com.s4n.deliveries.common.util.properties.PropertiesUtil;
 
-public class InputValidation implements IValidation{
+public class InputValidation implements Validation{
 
 	@Override
-	public ValidationResult validate(String deliveryInput) {
+	public Result validate(String deliveryInput) {
 		String regex = null; 
 		try {
 			regex = PropertiesUtil.getPropertyValue(Constants.REGEX_INPUT_VALIDATION);
@@ -23,7 +23,7 @@ public class InputValidation implements IValidation{
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(deliveryInput);
 		boolean matchResult = matcher.matches();
-		ValidationResult validationResult = new ValidationResult();
+		Result validationResult = new Result();
 		validationResult.setValid(matchResult);
 		if(matchResult)
 			validationResult.setMessage("SUCCESS");
