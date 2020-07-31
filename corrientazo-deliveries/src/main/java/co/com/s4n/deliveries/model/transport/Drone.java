@@ -12,8 +12,6 @@ import co.com.s4n.deliveries.model.location.Position;
 public class Drone extends Vehicle{
 
 	
-//	private ArrayList<Lunch> lunches;
-	
 	private ArrayList<Position> destinationDeliveryCoordinates;
 	
 	public Drone() {

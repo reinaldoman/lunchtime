@@ -29,12 +29,15 @@ public class DroneLauncherTask implements Task{
 		
 		try {
 			this.drone = dataService.getDroneById(this.drone.getId());
+			//TODO: implement here the logic to report drone availability
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		validateDestinations();
 		packLunches();
+		this.drone.setAvailable(false);
 		this.drone.deliver();
 	}
 	

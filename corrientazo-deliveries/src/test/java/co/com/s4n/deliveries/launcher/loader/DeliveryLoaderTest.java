@@ -2,9 +2,16 @@ package co.com.s4n.deliveries.launcher.loader;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import co.com.s4n.deliveries.exception.InvalidEntryException;
+import co.com.s4n.deliveries.model.routes.RoutesDescriptor;
+import co.com.s4n.deliveries.model.transport.Drone;
 
 public class DeliveryLoaderTest {
 
@@ -16,14 +23,34 @@ public class DeliveryLoaderTest {
 	public void tearDown() throws Exception {
 	}
 
+	
+	private DeliveryLoader deliveryLoader = new DeliveryLoader();
+	
 	@Test
 	public final void testListAvailableDrones() {
-		//fail("Not yet implemented"); // TODO
+		ArrayList<Drone> availableDrones = null;
+		try {
+			availableDrones = deliveryLoader.listAvailableDrones();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		assertTrue(availableDrones.size() == 1);
 	}
 
 	@Test
 	public final void testLoadData() {
-		//fail("Not yet implemented"); // TODO
+		RoutesDescriptor descriptor = null;
+		try {
+			descriptor = deliveryLoader.loadData("01");
+		} catch (InvalidEntryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		assertTrue("AAAAIAA".hashCode() == descriptor.getDestinationDeliveryCoordinates().get(0).getOriginalPath().hashCode());
 	}
 
 }

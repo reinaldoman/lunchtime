@@ -18,7 +18,15 @@ public class InputValidationTest {
 
 	@Test
 	public final void testValidate() {
-		//fail("Not yet implemented"); // TODO
+		InputValidation inputValidation = new InputValidation();
+		Result result = inputValidation.validate("AADDAAIAA");
+		assertTrue(result.isValid());
 	}
 
+	@Test
+	public final void testValidationfalse() {
+		InputValidation inputValidation = new InputValidation();
+		Result result = inputValidation.validate("AEIOU");
+		assertFalse(result.isValid());
+	}
 }

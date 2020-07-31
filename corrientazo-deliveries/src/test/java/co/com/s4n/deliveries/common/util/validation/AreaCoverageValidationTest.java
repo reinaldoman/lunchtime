@@ -6,6 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import co.com.s4n.deliveries.model.location.Direction;
+import co.com.s4n.deliveries.model.location.Position;
+
 public class AreaCoverageValidationTest {
 
 	@Before
@@ -19,6 +22,11 @@ public class AreaCoverageValidationTest {
 	@Test
 	public final void testValidate() {
 		//fail("Not yet implemented"); // TODO
+		//Validate if position is inside a coverage area
+		Position position = new Position("AAAADI", Direction.EAST, 1, 5);
+		AreaCoverageValidation areaCoverageValidation = new AreaCoverageValidation();
+		Result result = areaCoverageValidation.validate(position);
+		assertTrue(result.isValid());
 	}
 
 }

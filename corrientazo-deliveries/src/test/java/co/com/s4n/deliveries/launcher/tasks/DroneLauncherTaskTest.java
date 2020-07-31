@@ -1,10 +1,13 @@
 package co.com.s4n.deliveries.launcher.tasks;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import co.com.s4n.deliveries.exception.InvalidEntryException;
+import co.com.s4n.deliveries.exception.NonCoveredDestinationException;
+import co.com.s4n.deliveries.exception.NotEnoughRoomInTransportException;
+import co.com.s4n.deliveries.model.transport.Drone;
 
 public class DroneLauncherTaskTest {
 
@@ -18,7 +21,21 @@ public class DroneLauncherTaskTest {
 
 	@Test
 	public final void testLaunchDrone() {
-		//fail("Not yet implemented"); // TODO
+		Drone drone = new Drone();
+		drone.setId(01);
+		DroneLauncherTask droneLauncherTask = new DroneLauncherTask(drone);
+		try {
+			droneLauncherTask.launchDrone();
+		} catch (InvalidEntryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotEnoughRoomInTransportException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NonCoveredDestinationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

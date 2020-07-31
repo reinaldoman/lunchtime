@@ -8,7 +8,6 @@ import co.com.s4n.deliveries.exception.NotEnoughRoomInTransportException;
 import co.com.s4n.deliveries.launcher.loader.DeliveryLoader;
 import co.com.s4n.deliveries.model.content.DeliveryContent;
 import co.com.s4n.deliveries.model.content.Lunch;
-import co.com.s4n.deliveries.model.location.Position;
 import co.com.s4n.deliveries.model.routes.RoutesDescriptor;
 import co.com.s4n.deliveries.model.transport.Drone;
 
@@ -32,7 +31,7 @@ public class DataService {
 		Drone drone = new Drone();
 		drone.setId(Long.parseLong(routesDescriptor.getTransportId()));
 		ArrayList<DeliveryContent> lunches = new ArrayList<DeliveryContent>();
-		for(Position position : routesDescriptor.getDestinationDeliveryCoordinates()) {
+		for(int i = 0; i < routesDescriptor.getDestinationDeliveryCoordinates().size(); i++) {
 			Lunch lunch = new Lunch();
 			lunch.setDescription("LUNCH");
 			lunches.add(lunch);
