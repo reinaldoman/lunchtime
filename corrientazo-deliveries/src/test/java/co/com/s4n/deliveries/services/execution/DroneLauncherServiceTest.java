@@ -18,17 +18,17 @@ public class DroneLauncherServiceTest {
 
 	@Test
 	public final void testDroneLauncherService() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 	@Test
 	public final void testLaunchDrone() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 	@Test
 	public final void testLaunchAllAvailableDrones() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 }

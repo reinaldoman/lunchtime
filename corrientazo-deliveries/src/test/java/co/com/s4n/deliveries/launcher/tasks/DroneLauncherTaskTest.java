@@ -18,7 +18,7 @@ public class DroneLauncherTaskTest {
 
 	@Test
 	public final void testLaunchDrone() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 }

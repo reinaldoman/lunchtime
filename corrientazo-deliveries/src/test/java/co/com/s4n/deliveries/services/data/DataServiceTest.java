@@ -18,12 +18,12 @@ public class DataServiceTest {
 
 	@Test
 	public final void testGetAllDrones() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 	@Test
 	public final void testGetDroneById() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 }

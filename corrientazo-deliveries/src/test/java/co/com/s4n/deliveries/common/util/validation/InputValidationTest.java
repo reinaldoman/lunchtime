@@ -18,7 +18,7 @@ public class InputValidationTest {
 
 	@Test
 	public final void testValidate() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 }

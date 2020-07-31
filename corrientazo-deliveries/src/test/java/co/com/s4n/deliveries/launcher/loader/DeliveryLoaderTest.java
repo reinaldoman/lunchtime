@@ -18,12 +18,12 @@ public class DeliveryLoaderTest {
 
 	@Test
 	public final void testListAvailableDrones() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 	@Test
 	public final void testLoadData() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 }

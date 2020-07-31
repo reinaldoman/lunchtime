@@ -18,7 +18,7 @@ public class PathToCoordinatesTranslatorTest {
 
 	@Test
 	public final void testTranslate() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 }

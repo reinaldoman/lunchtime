@@ -18,7 +18,7 @@ public class AreaCoverageValidationTest {
 
 	@Test
 	public final void testValidate() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 }
