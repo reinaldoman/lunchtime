@@ -23,7 +23,7 @@ public class DataService {
 		
 		RoutesDescriptor routesDescriptor = null;
 		try {
-			routesDescriptor = deliveryLoader.loadData(id.toString());
+			routesDescriptor = deliveryLoader.loadData(id < 10 ? "0" + id.toString() : id.toString());//TODO improve this...
 		} catch (InvalidEntryException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
