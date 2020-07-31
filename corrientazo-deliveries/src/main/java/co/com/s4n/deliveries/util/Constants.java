@@ -10,6 +10,10 @@ public interface Constants {
 	String MAX_ROOM_FOR_DRONE = "max.room.for.drone";
 	String MAX_NUMBER_OF_DRONES = "max.number.of.drones";
 	String INPUT_FILES_PATH = "input.deliveries.files.path";
+	String INPUT_FILE_PREFIX = "input.file.prefix";
+	String INPUT_FILES_EXTENSION = "input.files.extension";
 	String OUTPUT_FILES_PATH = "output.deliveries.files.path";
+	String OUTPUT_FILE_PREFIX = "OUTput.file.prefix";
+	String OUTPUT_FILES_EXTENSION = "output.files.extension";
 	
 }

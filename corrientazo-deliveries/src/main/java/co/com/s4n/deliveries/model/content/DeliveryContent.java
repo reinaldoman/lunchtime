@@ -1,6 +1,6 @@
-package co.com.s4n.deliveries.model;
+package co.com.s4n.deliveries.model.content;
 
-public class Content {
+public class DeliveryContent {
 
 	private String description = "Content description";
 

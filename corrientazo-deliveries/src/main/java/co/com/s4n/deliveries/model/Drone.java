@@ -9,7 +9,7 @@ import co.com.s4n.deliveries.util.PropertiesUtil;
 
 public class Drone {
 
-	private String id;
+	private long id;
 	
 	private Position currentPosition = new Position("ORIGIN", Direction.NORTH, 0, 0);
 	
@@ -41,11 +41,11 @@ public class Drone {
 		this.destinationDeliveryCoordinates = destinationDeliveryCoordinates;
 	}
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -66,13 +66,15 @@ public class Drone {
 	}
 
 	public void deliver() {
+		//TODO some real log here
+		System.out.println("delivering drone " + id);
 		for(Position position : this.getDestinationDeliveryCoordinates()) {
 			goToDestination(position);
 		}
 	}
 	
 	private void goToDestination(Position destination) {
-		System.out.println("delivering lunch at: (" + destination.getX() + "," + destination.getY() + ")");
+		System.out.println("moving drone at: (" + destination.getX() + "," + destination.getY() + ")");
 		int xAxisDistanceInBlocks = currentPosition.getX() - destination.getX();
 		int yAxisDistanceInBlocks = currentPosition.getY() - destination.getY();
 		currentPosition = destination;
