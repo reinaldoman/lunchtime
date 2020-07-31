@@ -1,15 +1,16 @@
-package co.com.s4n.deliveries.services;
+package co.com.s4n.deliveries.services.data;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import co.com.s4n.deliveries.exception.InvalidEntryException;
 import co.com.s4n.deliveries.exception.NotEnoughRoomInTransportException;
-import co.com.s4n.deliveries.model.Drone;
-import co.com.s4n.deliveries.model.Lunch;
-import co.com.s4n.deliveries.model.Position;
-import co.com.s4n.deliveries.util.loader.DeliveryLoader;
-import co.com.s4n.deliveries.util.loader.RoutesDescriptor;
+import co.com.s4n.deliveries.launcher.loader.DeliveryLoader;
+import co.com.s4n.deliveries.model.content.DeliveryContent;
+import co.com.s4n.deliveries.model.content.Lunch;
+import co.com.s4n.deliveries.model.location.Position;
+import co.com.s4n.deliveries.model.routes.RoutesDescriptor;
+import co.com.s4n.deliveries.model.transport.Drone;
 
 public class DataService {
 
@@ -30,7 +31,7 @@ public class DataService {
 		}//TODO: remove hard code and invoke dataService
 		Drone drone = new Drone();
 		drone.setId(Long.parseLong(routesDescriptor.getTransportId()));
-		ArrayList<Lunch> lunches = new ArrayList<Lunch>();
+		ArrayList<DeliveryContent> lunches = new ArrayList<DeliveryContent>();
 		for(Position position : routesDescriptor.getDestinationDeliveryCoordinates()) {
 			Lunch lunch = new Lunch();
 			lunch.setDescription("LUNCH");

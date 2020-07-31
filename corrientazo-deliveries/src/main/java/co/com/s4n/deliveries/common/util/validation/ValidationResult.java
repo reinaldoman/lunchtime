@@ -1,4 +1,4 @@
-package co.com.s4n.deliveries.validation;
+package co.com.s4n.deliveries.common.util.validation;
 
 public class ValidationResult {
 

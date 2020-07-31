@@ -1,6 +1,6 @@
-package co.com.s4n.deliveries.validation;
+package co.com.s4n.deliveries.common.util.validation;
 
-import co.com.s4n.deliveries.model.Position;
+import co.com.s4n.deliveries.model.location.Position;
 
 public class DeliveryAreaCoverageValidation {
 

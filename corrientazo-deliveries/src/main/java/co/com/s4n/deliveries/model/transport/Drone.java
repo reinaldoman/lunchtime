@@ -1,23 +1,18 @@
-package co.com.s4n.deliveries.model;
+package co.com.s4n.deliveries.model.transport;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import co.com.s4n.deliveries.common.util.properties.Constants;
+import co.com.s4n.deliveries.common.util.properties.PropertiesUtil;
 import co.com.s4n.deliveries.exception.NotEnoughRoomInTransportException;
-import co.com.s4n.deliveries.util.Constants;
-import co.com.s4n.deliveries.util.PropertiesUtil;
+import co.com.s4n.deliveries.model.content.DeliveryContent;
+import co.com.s4n.deliveries.model.location.Position;
 
-public class Drone {
+public class Drone extends Vehicle{
 
-	private long id;
 	
-	private Position currentPosition = new Position("ORIGIN", Direction.NORTH, 0, 0);
-	
-	private boolean available;
-	
-	private int room;
-	
-	private ArrayList<Lunch> lunches;
+//	private ArrayList<Lunch> lunches;
 	
 	private ArrayList<Position> destinationDeliveryCoordinates;
 	
@@ -97,10 +92,10 @@ public class Drone {
 	}
 	
 	
-	public void setShipmentsCargo(ArrayList<Lunch> lunches) throws NotEnoughRoomInTransportException {
+	public void setShipmentsCargo(ArrayList<DeliveryContent> lunches) throws NotEnoughRoomInTransportException {
 		if(lunches.size() > room) {
 			throw new NotEnoughRoomInTransportException();
 		}
-		this.lunches = lunches;
+		this.contents = lunches;
 	}
 }

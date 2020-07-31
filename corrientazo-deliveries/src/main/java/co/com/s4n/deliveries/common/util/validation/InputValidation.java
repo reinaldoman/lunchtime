@@ -1,11 +1,11 @@
-package co.com.s4n.deliveries.validation;
+package co.com.s4n.deliveries.common.util.validation;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import co.com.s4n.deliveries.util.Constants;
-import co.com.s4n.deliveries.util.PropertiesUtil;
+import co.com.s4n.deliveries.common.util.properties.Constants;
+import co.com.s4n.deliveries.common.util.properties.PropertiesUtil;
 
 public class InputValidation implements IValidation{
 

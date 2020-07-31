@@ -1,15 +1,15 @@
-package co.com.s4n.deliveries.services;
+package co.com.s4n.deliveries.services.execution;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import co.com.s4n.deliveries.model.Drone;
-import co.com.s4n.deliveries.util.Constants;
-import co.com.s4n.deliveries.util.PropertiesUtil;
-import co.com.s4n.deliveries.util.launcher.DroneLauncherTask;
-import co.com.s4n.deliveries.util.loader.DeliveryLoader;
+import co.com.s4n.deliveries.common.util.properties.Constants;
+import co.com.s4n.deliveries.common.util.properties.PropertiesUtil;
+import co.com.s4n.deliveries.launcher.loader.DeliveryLoader;
+import co.com.s4n.deliveries.launcher.tasks.DroneLauncherTask;
+import co.com.s4n.deliveries.model.transport.Drone;
 
 
 public class DroneLauncherService {

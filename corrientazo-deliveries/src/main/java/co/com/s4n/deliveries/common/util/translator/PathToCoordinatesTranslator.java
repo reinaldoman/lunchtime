@@ -1,10 +1,10 @@
-package co.com.s4n.deliveries.util.translator;
+package co.com.s4n.deliveries.common.util.translator;
 
-import co.com.s4n.deliveries.model.Direction;
-import co.com.s4n.deliveries.model.MovementType;
-import co.com.s4n.deliveries.model.Position;
+import co.com.s4n.deliveries.model.location.Direction;
+import co.com.s4n.deliveries.model.location.Position;
+import co.com.s4n.deliveries.model.movement.MovementType;
 
-public class Path2PositionTranslator {
+public class PathToCoordinatesTranslator {
 
 	public static Position translate(String inputPath, Position relativePosition) {
 		return getResultingPositionFromInputPath(inputPath, relativePosition);

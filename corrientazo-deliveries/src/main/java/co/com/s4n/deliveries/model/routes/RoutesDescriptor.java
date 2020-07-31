@@ -1,8 +1,8 @@
-package co.com.s4n.deliveries.util.loader;
+package co.com.s4n.deliveries.model.routes;
 
 import java.util.ArrayList;
 
-import co.com.s4n.deliveries.model.Position;
+import co.com.s4n.deliveries.model.location.Position;
 
 public class RoutesDescriptor {
 	

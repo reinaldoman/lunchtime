@@ -1,6 +1,4 @@
-package co.com.s4n.deliveries.model;
-
-import co.com.s4n.deliveries.model.content.DeliveryContent;
+package co.com.s4n.deliveries.model.content;
 
 public class Lunch extends DeliveryContent {
 

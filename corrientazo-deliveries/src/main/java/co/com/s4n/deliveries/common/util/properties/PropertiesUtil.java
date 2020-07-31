@@ -1,4 +1,4 @@
-package co.com.s4n.deliveries.util;
+package co.com.s4n.deliveries.common.util.properties;
 
 import java.io.FileInputStream;
 import java.io.IOException;

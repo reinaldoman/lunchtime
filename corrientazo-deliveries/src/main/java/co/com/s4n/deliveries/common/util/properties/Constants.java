@@ -1,4 +1,4 @@
-package co.com.s4n.deliveries.util;
+package co.com.s4n.deliveries.common.util.properties;
 
 public interface Constants {
 	

@@ -1,19 +1,20 @@
-package co.com.s4n.deliveries.util.launcher;
+package co.com.s4n.deliveries.launcher.tasks;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import co.com.s4n.deliveries.common.util.validation.DeliveryAreaCoverageValidation;
+import co.com.s4n.deliveries.common.util.validation.ValidationResult;
 import co.com.s4n.deliveries.exception.InvalidEntryException;
 import co.com.s4n.deliveries.exception.NonCoveredDestinationException;
 import co.com.s4n.deliveries.exception.NotEnoughRoomInTransportException;
-import co.com.s4n.deliveries.model.Drone;
-import co.com.s4n.deliveries.model.Lunch;
-import co.com.s4n.deliveries.model.Position;
-import co.com.s4n.deliveries.services.DataService;
-import co.com.s4n.deliveries.validation.DeliveryAreaCoverageValidation;
-import co.com.s4n.deliveries.validation.ValidationResult;
+import co.com.s4n.deliveries.model.content.DeliveryContent;
+import co.com.s4n.deliveries.model.content.Lunch;
+import co.com.s4n.deliveries.model.location.Position;
+import co.com.s4n.deliveries.model.transport.Drone;
+import co.com.s4n.deliveries.services.data.DataService;
 
-public class DroneLauncherTask implements ITask{
+public class DroneLauncherTask implements Task{
 
 	
 	private Drone drone;
@@ -38,7 +39,7 @@ public class DroneLauncherTask implements ITask{
 	}
 	
 	private void packLunches() throws NotEnoughRoomInTransportException {
-		ArrayList<Lunch> lunches = new ArrayList<Lunch>();
+		ArrayList<DeliveryContent> lunches = new ArrayList<DeliveryContent>();
 		for(int i = 0; i < this.drone.getDestinationDeliveryCoordinates().size(); i++) {
 			Lunch lunch = new Lunch();
 			lunch.setDescription("LUNCH");

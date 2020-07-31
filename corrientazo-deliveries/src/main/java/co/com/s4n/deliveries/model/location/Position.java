@@ -1,4 +1,4 @@
-package co.com.s4n.deliveries.model;
+package co.com.s4n.deliveries.model.location;
 
 public class Position {
 

@@ -1,4 +1,4 @@
-package co.com.s4n.deliveries.util.loader;
+package co.com.s4n.deliveries.launcher.loader;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,15 +8,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
+import co.com.s4n.deliveries.common.util.properties.Constants;
+import co.com.s4n.deliveries.common.util.properties.PropertiesUtil;
+import co.com.s4n.deliveries.common.util.translator.PathToCoordinatesTranslator;
+import co.com.s4n.deliveries.common.util.validation.InputValidation;
+import co.com.s4n.deliveries.common.util.validation.ValidationResult;
 import co.com.s4n.deliveries.exception.InvalidEntryException;
-import co.com.s4n.deliveries.model.Direction;
-import co.com.s4n.deliveries.model.Drone;
-import co.com.s4n.deliveries.model.Position;
-import co.com.s4n.deliveries.util.Constants;
-import co.com.s4n.deliveries.util.PropertiesUtil;
-import co.com.s4n.deliveries.util.translator.Path2PositionTranslator;
-import co.com.s4n.deliveries.validation.InputValidation;
-import co.com.s4n.deliveries.validation.ValidationResult;
+import co.com.s4n.deliveries.model.location.Direction;
+import co.com.s4n.deliveries.model.location.Position;
+import co.com.s4n.deliveries.model.routes.RoutesDescriptor;
+import co.com.s4n.deliveries.model.transport.Drone;
 
 public class DeliveryLoader {
 	
@@ -77,7 +78,7 @@ public class DeliveryLoader {
 		    		throw new InvalidEntryException("Invalid incoming data at line: " + lineNumber + " with content: " + line);
 		    	}
 		    	initialPosition.setOriginalPath(line);
-		    	Position position = Path2PositionTranslator.translate(line, initialPosition);
+		    	Position position = PathToCoordinatesTranslator.translate(line, initialPosition);
 		    	routesDescriptor.getDestinationDeliveryCoordinates().add(new Position(position.getOriginalPath(), 
 		    													              position.getDirection(), 
 		    													              position.getX(), 
