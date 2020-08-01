@@ -9,6 +9,7 @@ import co.com.s4n.deliveries.exception.NotEnoughRoomInTransportException;
 import co.com.s4n.deliveries.model.content.DeliveryContent;
 import co.com.s4n.deliveries.model.location.Direction;
 import co.com.s4n.deliveries.model.location.Position;
+import co.com.s4n.deliveries.model.movement.MovementType;
 
 public class Drone extends Vehicle{
 
@@ -63,60 +64,67 @@ public class Drone extends Vehicle{
 		//TODO some real log here
 		System.out.println("delivering drone " + id);
 		for(Position position : this.getDestinationDeliveryCoordinates()) {
+			System.out.println("Next delivery from (" + currentPosition.getX() + "," + currentPosition.getY() + ") to (" + position.getX() + "," + position.getY() + ")");
 			goToDestination(position);
 		}
 	}
 
 	private void goToDestination(Position destination) {
-		System.out.println("moving drone at: (" + destination.getX() + "," + destination.getY() + ")");
 		move(destination);
+//		currentPosition.setDirection(destination.getDirection());
 	}
 
 	/*
 	 * Moves current drone to a given position
 	 */
 	private void move(Position destination) {
+		translateToCoordinates(destination);
+	}
+	
+	private void translateToCoordinates(Position destination) {
+		
 		int xAxisDistanceInBlocks = currentPosition.getX() - destination.getX();
 		int yAxisDistanceInBlocks = currentPosition.getY() - destination.getY();
-		//X axis movement 
-		if(currentPosition.getX() != destination.getX()) {
-			if(currentPosition.getDirection() != destination.getDirection()) {
-				//rotate 180 degrees
-				currentPosition.setDirection(currentPosition.getDirection() == Direction.EAST ? Direction.WEST : Direction.EAST);
+		
+		//X axis movement
+		if(xAxisDistanceInBlocks != 0) {
+			if(xAxisDistanceInBlocks < 0) {
+				currentPosition.setDirection(Direction.EAST);
 			}
-			else
-				for(int x = currentPosition.getX(); x < xAxisDistanceInBlocks; x++) {
-					System.out.println("moving to position (" + x + "," + currentPosition.getY() + ")");
-					currentPosition.setX(x);
-					currentPosition.setDirection(x > 0 ? Direction.EAST : Direction.WEST);
-				}
-			//Y axis movement 
-		} else if(currentPosition.getY() != destination.getY()) {
-			if(currentPosition.getDirection() != destination.getDirection()) {
-				//rotate 180 degrees
-				currentPosition.setDirection(currentPosition.getDirection() == Direction.NORTH ? Direction.SOUTH: Direction.NORTH);
+			else if(xAxisDistanceInBlocks > 0) {
+				currentPosition.setDirection(Direction.WEST);
 			}
-			else
-				for(int y = currentPosition.getY(); y < yAxisDistanceInBlocks; y++) {
-					System.out.println("moving to position (" + currentPosition.getX() + "," + y + ")");
-					currentPosition.setY(y);
-					currentPosition.setDirection(y > 0 ? Direction.NORTH : Direction.SOUTH);
-				}
-		} 
-		System.out.println("IS IT EQUAL?");
-		if (currentPosition.getX() != destination.getX() || currentPosition.getY() != destination.getY()) {
-			System.out.println("something went wrong with coordinates!!");
-
-
-			if(currentPosition.getDirection() != destination.getDirection()) {
-				System.out.println("something went wrong with direction!!");
+			int nextXPosition = 0;
+			for(int x = currentPosition.getX(); x < Math.abs(xAxisDistanceInBlocks); x++) {
+				if(currentPosition.getDirection() == Direction.EAST)
+					nextXPosition++;
+				else 
+					nextXPosition--;
+				System.out.println("moving to position (" + nextXPosition + "," + currentPosition.getY() + ") on direction " + currentPosition.getDirection());
+				currentPosition.setX(nextXPosition);
 			}
-		} 
-		System.out.println("IS IT EQUAL OR NOT?");
-
-		currentPosition = destination;//current position should be same as destination now
+		}
+		
+		//Y axis movement
+		if(yAxisDistanceInBlocks != 0) {
+			if(yAxisDistanceInBlocks < 0) {
+				currentPosition.setDirection(Direction.NORTH);
+			}
+			if(yAxisDistanceInBlocks > 0) {
+				currentPosition.setDirection(Direction.SOUTH);
+			}
+			int nextYPosition = 0;
+			for(int y = currentPosition.getY(); y < Math.abs(yAxisDistanceInBlocks); y++) {
+				if(currentPosition.getDirection() == Direction.NORTH)
+					nextYPosition++;
+				else 
+					nextYPosition--;
+				System.out.println("moving to position (" + currentPosition.getX() + "," + nextYPosition + ") on direction " + currentPosition.getDirection());
+				currentPosition.setY(nextYPosition);
+			}
+		}
 	}
-
+	
 	public void setShipmentsCargo(ArrayList<DeliveryContent> lunches) throws NotEnoughRoomInTransportException {
 		if(lunches.size() > room) {
 			throw new NotEnoughRoomInTransportException();
