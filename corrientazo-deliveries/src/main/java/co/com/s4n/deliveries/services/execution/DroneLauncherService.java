@@ -1,6 +1,7 @@
 package co.com.s4n.deliveries.services.execution;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -34,7 +35,9 @@ public class DroneLauncherService {
 		//TODO: logger
 		System.out.println("Preparint to launch drone " + drone.getId());
 		 executor.submit(() -> {
+			 	System.out.println("ABOUT TO LAUNCH DRONE::::: " + drone.getId() + " AT " + new Date());
 	            new DroneLauncherTask(drone);
+	            System.out.println("DRONE " + drone.getId() +" LAUNCHED::::: ");
 	        });
 
 	        executor.shutdown();

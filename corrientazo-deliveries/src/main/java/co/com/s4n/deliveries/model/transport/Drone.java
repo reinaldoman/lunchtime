@@ -9,10 +9,13 @@ import co.com.s4n.deliveries.exception.NotEnoughRoomInTransportException;
 import co.com.s4n.deliveries.model.content.DeliveryContent;
 import co.com.s4n.deliveries.model.location.Position;
 
-public class Drone extends Vehicle implements Deliverable{
+public class Drone extends Vehicle implements Deliverable, Traceable{
 
 
 	private ArrayList<Position> destinationDeliveryCoordinates;
+	
+	protected int deliveryCapacity;
+	protected ArrayList<DeliveryContent> contents;
 
 	public Drone() {
 		try {
@@ -34,32 +37,8 @@ public class Drone extends Vehicle implements Deliverable{
 		this.destinationDeliveryCoordinates = destinationDeliveryCoordinates;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Position getCurrentPosition() {
-		return currentPosition;
-	}
-
-	public void setCurrentPosition(Position position) {
-		this.currentPosition = position;
-	}
-
-	public boolean isAvailable() {
-		return available;
-	}
-
-	public void setAvailable(boolean available) {
-		this.available = available;
-	}
-
 	public void setShipmentsCargo(ArrayList<DeliveryContent> lunches) throws NotEnoughRoomInTransportException {
-		if(lunches.size() > deliveryCapacity) {
+		if(lunches.size() > this.deliveryCapacity) {
 			throw new NotEnoughRoomInTransportException();
 		}
 		this.contents = lunches;
@@ -69,14 +48,20 @@ public class Drone extends Vehicle implements Deliverable{
 	public void deliverAddresses() {
 		System.out.println("Drone " + id + " about to deliver addresses");
 		for(Position position : this.getDestinationDeliveryCoordinates()) {
-			System.out.println("From (" + currentPosition.getX() + "," + currentPosition.getY() + ") TO (" + position.getX() + "," + position.getY() + ")");
+			System.out.println("---> (" + currentPosition.getX() + "," + currentPosition.getY() + ") ---> (" + position.getX() + "," + position.getY() + ")");
 			moveToPosition(position);
 			if(currentPosition.getDirection() != position.getDirection()) {
-				System.out.println("Rotating to direction: " + position.getDirection());
+				System.out.println("Rotating  " + position.getDirection());
 				currentPosition.setDirection(position.getDirection()); //Ensure at the end position direction be as desired
 			}
+			trace();
 		}
 		System.out.println("Final position: (" + currentPosition.getX() + "," + currentPosition.getY() + ") " + currentPosition.getDirection());
 		
+	}
+
+	@Override
+	public void trace() {
+		traceService.trace(this);
 	}
 }

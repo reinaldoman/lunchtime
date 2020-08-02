@@ -2,6 +2,7 @@ package co.com.s4n.deliveries.launcher.tasks;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import co.com.s4n.deliveries.common.util.validation.AreaCoverageValidation;
 import co.com.s4n.deliveries.common.util.validation.Result;
@@ -36,8 +37,10 @@ public class DroneLauncherTask implements Task{
 			e.printStackTrace();
 		}
 		validateDestinations();
+		System.out.println("packing up lunches...");
 		packLunches();
 		this.drone.setAvailable(false);
+		System.out.println("Launching dron: " + drone.getId() + "....");
 		this.drone.deliverAddresses();
 	}
 	
