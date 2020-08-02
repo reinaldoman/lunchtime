@@ -38,7 +38,7 @@ public class DroneLauncherTask implements Task{
 		validateDestinations();
 		packLunches();
 		this.drone.setAvailable(false);
-		this.drone.deliver();
+		this.drone.deliverAddresses();
 	}
 	
 	private void packLunches() throws NotEnoughRoomInTransportException {
