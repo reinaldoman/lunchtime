@@ -6,6 +6,6 @@ public interface Traceable {
 
 	public static final TraceService traceService = new TraceService();
 	
-	void trace();
+	void trace(boolean detail);
 	
 }

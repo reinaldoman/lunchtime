@@ -7,7 +7,7 @@ import co.com.s4n.deliveries.common.util.properties.PropertiesUtil;
 import co.com.s4n.deliveries.model.location.Direction;
 import co.com.s4n.deliveries.model.location.Position;
 
-public class Vehicle {
+public class Vehicle implements Traceable{
 
 	protected long id;
 	protected Position currentPosition = new Position("ORIGIN", Direction.NORTH, 0, 0);
@@ -108,6 +108,12 @@ public class Vehicle {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				trace(true);
+	}
+	
+	@Override
+	public void trace(boolean detail) {
+		traceService.trace(this, detail);
 	}
 	
 }
