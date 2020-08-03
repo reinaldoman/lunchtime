@@ -21,7 +21,6 @@ public class AreaCoverageValidationTest {
 
 	@Test
 	public final void testValidate() {
-		//fail("Not yet implemented"); // TODO
 		//Validate if position is inside a coverage area
 		Position position = new Position("AAAADI", Direction.EAST, 1, 5);
 		AreaCoverageValidation areaCoverageValidation = new AreaCoverageValidation();

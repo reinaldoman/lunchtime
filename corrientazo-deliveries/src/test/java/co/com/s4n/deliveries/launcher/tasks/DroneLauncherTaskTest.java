@@ -27,13 +27,10 @@ public class DroneLauncherTaskTest {
 		try {
 			droneLauncherTask.launchDrone();
 		} catch (InvalidEntryException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NotEnoughRoomInTransportException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NonCoveredDestinationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

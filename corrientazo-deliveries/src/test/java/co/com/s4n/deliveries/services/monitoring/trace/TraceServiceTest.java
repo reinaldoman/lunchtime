@@ -1,10 +1,12 @@
-package co.com.s4n.deliveries.services.data;
+package co.com.s4n.deliveries.services.monitoring.trace;
+
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class DataServiceTest {
+public class TraceServiceTest {
 
 	@Before
 	public void setUp() throws Exception {
@@ -15,11 +17,8 @@ public class DataServiceTest {
 	}
 
 	@Test
-	public final void testGetAllDrones() {
-	}
-
-	@Test
-	public final void testGetDroneById() {
+	public final void test() {
+		fail("Not yet implemented"); // TODO
 	}
 
 }

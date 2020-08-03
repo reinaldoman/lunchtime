@@ -44,10 +44,8 @@ public class DeliveryLoaderTest {
 		try {
 			descriptor = deliveryLoader.loadData("01");
 		} catch (InvalidEntryException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		assertTrue("AAAAIAA".hashCode() == descriptor.getDestinationDeliveryCoordinates().get(0).getOriginalPath().hashCode());

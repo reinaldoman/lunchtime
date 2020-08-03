@@ -21,7 +21,6 @@ public class PathToCoordinatesTranslatorTest {
 
 	@Test
 	public final void testTranslate() {
-		//fail("Not yet implemented"); // TODO
 		/*Given a launch delivery input calculate a point and address
 		 * on a coordinated system.
 		 * */ 
