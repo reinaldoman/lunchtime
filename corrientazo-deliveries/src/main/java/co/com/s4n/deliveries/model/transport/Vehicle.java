@@ -43,21 +43,17 @@ public class Vehicle implements Traceable{
 		if(xAxisDistanceInBlocks > 0) {
 			currentPosition.setDirection(Direction.WEST);
 			if(currentPosition.getX() == xAxisDistanceInBlocks) { 
-//				currentPosition.setX(currentPosition.getX() - 1);
 				moveAlong(currentPosition.getX() - 1, currentPosition.getY());
 			}
 			for(int x = currentPosition.getX(); x > destination.getX(); x--) {
-//				currentPosition.setX(x-1);
 				moveAlong(x-1, currentPosition.getY());
 				System.out.println(message + currentPosition.getX() + "," + currentPosition.getY() + ") " + currentPosition.getDirection());
 			}
 		} else if(xAxisDistanceInBlocks < 0) {
 			currentPosition.setDirection(Direction.EAST);
 			if(currentPosition.getX() == xAxisDistanceInBlocks) 
-//				currentPosition.setX(currentPosition.getX() + 1);
 				moveAlong(currentPosition.getX() + 1, currentPosition.getY());
 			for(int x = currentPosition.getX(); x < xAxisDistanceInBlocks; x++) {
-//				currentPosition.setX(x+1);
 				moveAlong(x + 1, currentPosition.getY());
 				System.out.println(message + currentPosition.getX() + "," + currentPosition.getY() + ") " + currentPosition.getDirection());
 			}
@@ -70,7 +66,6 @@ public class Vehicle implements Traceable{
 		if(yAxisDistanceInBlocks > 0) {
 			currentPosition.setDirection(Direction.SOUTH);
 			if(currentPosition.getY() == yAxisDistanceInBlocks) 
-//				currentPosition.setY(currentPosition.getY() - 1);
 				moveAlong(currentPosition.getX(), currentPosition.getY() - 1);
 			
 			for(int y = currentPosition.getY(); y > destination.getY(); y--) {
@@ -81,10 +76,8 @@ public class Vehicle implements Traceable{
 		} else if(yAxisDistanceInBlocks < 0) {
 			currentPosition.setDirection(Direction.NORTH);
 			if(currentPosition.getY() == yAxisDistanceInBlocks) 
-//				currentPosition.setY(currentPosition.getY() + 1);
 				moveAlong(currentPosition.getX(), currentPosition.getY() + 1);
 			for(int y = currentPosition.getY(); y < destination.getY(); y++) {
-//				currentPosition.setY(y+1);
 				moveAlong(currentPosition.getX(), y+1);
 				System.out.println(message + currentPosition.getX() + "," + currentPosition.getY() + ") " + currentPosition.getDirection());
 			}

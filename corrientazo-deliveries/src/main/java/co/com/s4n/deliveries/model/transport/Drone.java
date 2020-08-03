@@ -9,7 +9,7 @@ import co.com.s4n.deliveries.exception.NotEnoughRoomInTransportException;
 import co.com.s4n.deliveries.model.content.DeliveryContent;
 import co.com.s4n.deliveries.model.location.Position;
 
-public class Drone extends Vehicle implements Deliverable{
+public class Drone extends Vehicle implements Deliverable, Reportable{
 
 
 	private ArrayList<Position> destinationDeliveryCoordinates;
@@ -55,9 +55,15 @@ public class Drone extends Vehicle implements Deliverable{
 				System.out.println("Rotating  " + position.getDirection());
 				currentPosition.setDirection(position.getDirection()); //Ensure at the end position direction be as desired
 			}
-			trace(false);
+			reportDeliveries(this);
 		}
 		System.out.println("Final position: (" + currentPosition.getX() + "," + currentPosition.getY() + ") " + currentPosition.getDirection());
+		
+	}
+
+	@Override
+	public void reportDeliveries(Vehicle vehicle) {
+		deliveryReportingService.reportDeliveries(this);
 		
 	}
 
